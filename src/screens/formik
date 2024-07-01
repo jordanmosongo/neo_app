@@ -1,0 +1,461 @@
+import {StyleSheet, Text, Image} from 'react-native';
+import {View} from 'react-native';
+import React, {useRef, useState, Fragment, useEffect} from 'react';
+import {TextInput} from 'react-native-element-textinput';
+
+import {
+  TouchableHighlight,
+  Dimensions,
+  Alert,
+  Platform,
+  TouchableWithoutFeedback,
+  Keyboard,
+  KeyboardAvoidingView,
+  ToastAndroid,
+} from 'react-native';
+import {TouchableOpacity} from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import CheckBox from '@react-native-community/checkbox';
+import Dashboard from './dashboard';
+import {useNavigation, StackActions} from '@react-navigation/native';
+import styled from 'styled-components/native';
+import Video from 'react-native-video';
+import LinearGradient from 'react-native-linear-gradient';
+import {isEmpty} from 'lodash';
+import UserHelper from '../helpers/UserHelper';
+import {useDispatch, useSelector} from 'react-redux';
+import axios from 'axios';
+import {ProgressDialog} from 'react-native-simple-dialogs';
+import {StatusBar} from 'react-native';
+
+const {width, height} = Dimensions.get('window');
+
+import {userServices} from '../services/userServices';
+
+import {setUserConnected} from '../store/userSlice';
+
+import jwt_decode from 'jwt-decode';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import {ActivityIndicator} from 'react-native-paper';
+import {getStorage} from '../helpers/userHelpers';
+import {ScrollView} from 'react-native-gesture-handler';
+import Toast from 'react-native-toast-message';
+import { Formik } from 'formik';
+import * as yup from 'yup'
+
+const loginValidationShema =yup.object().shape({
+  eamil: yup.string().email('Insérez votre email valide').required('Ce champs est obligatoire'),
+  password: yup.string().min(8,({min}) =>` mot de password au moins ${
+    min
+  } caractères`).required('Ce champs est obligatoire').matches(
+    "^(?=.*[A-Za-z])(?=.*d)(?=.*[@$!%*#?&])[A-Za-zd@$!%*#?&]{8,}$",
+    "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character"
+  ),
+});
+
+const Login = () => {
+  const [email, setUserEmail] = useState('');
+  const [password, setPwd] = useState();
+  const [checked, setChecked] = React.useState(false);
+  const inputPassword = useRef({});
+  const toggleCheckbox = () => setChecked(!checked);
+  const navigation = useNavigation();
+  const [loading, setLoading] = useState(false);
+  const [rememberMe, SetRemember] = useState(false);
+
+  const dispatch = useDispatch();
+
+  const user = useSelector(state => state.user);
+
+  if (user.status === 'CONNECTED') {
+    navigation.dispatch(StackActions.replace('Dashboard'));
+  }
+
+  const login = async () => {
+
+    if (isEmpty(email) || isEmpty(password)) {
+      Toast.show({
+        type:'info',
+        position:'top',
+        text1:'Information',
+        text2:'Vos devrez nécessairement écrire votre e-mail et mot de passe',
+        visibilityTime:3000,
+        autoHide:true,
+        onShow:()=>{},
+        onHide:()=>{},
+      })
+      return;
+    }
+
+    let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+    if (!reg.test(email)) {
+     
+      Toast.show({
+        type:'error',
+        position:'top',
+        text1:'Email',
+        text2:'Votre e-mail n`est pas correct',
+        visibilityTime:3000,
+        autoHide:true,
+        onShow:()=>{},
+        onHide:()=>{},
+      })
+      return;
+    }
+    try {
+      setLoading(true);
+      const {data} = await userServices.login(email, password);
+      const {access, refresh} = data;
+      const {participant_id} = jwt_decode(access);
+
+      await AsyncStorage.setItem('@USER', JSON.stringify(data));
+ 
+      dispatch(
+        setUserConnected({
+          access,
+          refresh,
+          participant_id,
+        }),
+      );
+
+     /*  await AsyncStorage.setItem('@USER', JSON.stringify(user)); */
+    } catch (error) {
+      console.log('Authentification ', error);
+      Toast.show({
+        type:'error',
+        position:'top',
+        text1:'Authentication',
+        text2:'Votre email ou mot de passe est incorrect',
+        visibilityTime:3000,
+        autoHide:true,
+        onShow:()=>{},
+        onHide:()=>{},
+      })
+    } finally {
+      setLoading(false);
+    }
+
+    
+  };
+
+  const onReset = () => {
+    navigation.navigate('Forgot');
+  };
+
+  return (
+    <Formik
+     initialValues={{ email: '' ,password: '' ,}}
+     validateOnMount={true}
+     onSubmit={values => console.log(values)}
+     validationSchema={loginValidationShema}
+   >
+     {({ handleChange, handleBlur, handleSubmit, values,touched,
+     isValid,errors }) => (
+    <View>
+      
+      <StatusBar hidden />
+
+      <Video
+        source={require('../components/assets/hd0992_preview.mp4')}
+        style={styles.backgroundVideo}
+        muted={true}
+        repeat={true}
+        resizeMode={'cover'}
+        rate={1.0}
+        ignoreSilentSwitch={'obey'}
+      />
+      <LinearGradient
+        colors={[
+          'rgba(114, 110, 248,0.2)',
+          'rgba(114, 110, 248,0.2)',
+          'rgba(114, 110, 248,0.2)',
+        ]}
+        style={styles.contentContainer}>
+          
+        <Wrapper>
+          <View style={styles.logo}>
+          
+            <Image
+              source={require('../components/assets/LOGO-NEO.png')}
+              style={{
+                width: 300,
+                height: 200,
+                marginBottom: 10,
+              }}
+            />
+          </View>
+          
+      <Toast ref={(ref)=>{Toast.setRef(ref)}} />
+          <Title>
+            Neo, bien plus qu'une plateforme de networking, un véritable
+            assistant personnel et virtuel.
+          </Title>
+          <View></View>
+          <ScrollView>
+            <View style={{marginTop: 35, marginBottom: -20}}>
+              <TextInput
+                value={email}
+                keyboardType="email-address"
+                style={styles.textInput}
+                inputStyle={styles.labelStyle}
+                placeholderStyle={styles.placeholderStyle}
+                showIcon={false}
+                returnKeyType="next"
+                placeholder="E-mail"
+                placeholderTextColor="gray"
+                focusColor="red"
+                onChangeText={text => {
+                  setUserEmail(text);
+                }}
+                onBlur={handleBlur('email')}
+              />
+              {(errors.email && touched.email) &&
+              <Text style={styles.errors}>{errors.email}</Text>
+              }
+              <TextInput
+                mode="password"
+                value={password}
+                style={styles.textInput}
+                inputStyle={styles.labelStyle}
+                placeholderStyle={styles.placeholderStyle}
+                iconStyle={{right: 20, tintColor: '#271d67'}}
+                showIcon={true}
+                placeholder="Mot de passe"
+                placeholderTextColor="gray"
+                focusColor="red"
+                onChangeText={text => {
+                  setPwd(text);
+                }}
+              />
+              {(errors.password && touched.password) &&
+              <Text style={styles.errors}>{errors.password}</Text>
+              }
+            </View>
+          </ScrollView>
+          <View>
+            {/* <View>
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    right: 20,
+                    alignItems: 'center',
+                  }}>
+                  <CheckBox
+                    value={rememberMe}
+                    onValueChange={value => toggleRememberMe()}
+                    style={styles.checkbox}
+                  />
+                  <Text style={styles.checkbox}>Se souvenir de moi</Text>
+                </View>
+              </View> */}
+            <ButtonWrapper>
+              <Fragment>
+                
+                <StyledButton onPress={() => login()}>
+                  {loading ? (
+                    <ActivityIndicator size={15} color="#fff" />
+                  ) : (
+                    <Text style={styles.txt_btn}>je me connecte</Text>
+                  )}
+                </StyledButton>
+              </Fragment>
+            </ButtonWrapper>
+            <View style={styles.view_checkbox}>
+              <Text style={styles.forgotPwd} onPress={() => onReset()}>
+                Mot de passe oublié?
+              </Text>
+            </View>
+          </View>
+        </Wrapper>
+      </LinearGradient>
+    </View>
+    )}
+    </Formik>
+  );
+};
+const styles = StyleSheet.create({
+  errors:{
+    fontSize:14,
+    color:'red',
+    fontWeight: 'bold',
+    marginTop:5
+  },
+  txt_btn: {
+    textTransform: 'uppercase',
+    textAlign: 'center',
+    letterSpacing: 3,
+    fontWeight: 'bold',
+    color: '#fff',
+  },
+  backgroundVideo: {
+    height: height,
+    width: width,
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    alignItems: 'stretch',
+    bottom: 0,
+    right: 0,
+  },
+  contentContainer: {
+    height: height,
+    width: '100%',
+  },
+  forgotPwd: {
+    textDecorationLine: 'underline',
+    color: '#fff',
+    marginTop: 5,
+    fontSize: 15,
+    fontFamily: 'poppins-regular',
+  },
+  view_input: {
+    margin: 35,
+    marginBottom: -50,
+    left: 10,
+  },
+  textInput: {
+    backgroundColor: '#fff',
+    width: 300,
+    height: 50,
+    borderRadius: 200,
+    border: 1,
+    textAlign: 'center',
+    marginBottom: 20,
+  },
+  placeholderStyle: {
+    fontWeight: 'bold',
+    color: 'blue',
+  },
+  labelStyle: {
+    textAlign: 'center',
+    fontSize: 14,
+    color: 'grey',
+  },
+  txt: {
+    textAlign: 'center',
+    fontSize: 25,
+    color: '#fff',
+    width: 300,
+    fontWeight: 'bold',
+  },
+  view_button: {
+    marginBottom: 50,
+    marginTop: 10,
+  },
+  button: {
+    backgroundColor: 'red',
+    width: 200,
+    height: 50,
+    borderRadius: 30,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  logo: {
+    backgroundColor: 'White',
+    width: 30,
+    height: 100,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 50,
+  },
+  view_setTitle: {
+    height: 150,
+    margin: 20,
+    paddingTop: 10,
+  },
+  textiputstyle: {
+    textAlign: 'center',
+    borderRadius: 10,
+    marginBottom: 10,
+  },
+  txt_user: {
+    flex: 1,
+    color: 'grey',
+    fontSize: 15,
+  },
+
+  panel: {
+    flex: 1,
+
+    paddingTop: 50,
+    paddingBottom: 113,
+  },
+  view_checkbox: {
+    alignItems: 'center',
+  },
+  checkbox: {
+    color: '#fff',
+    fontSize: 13,
+  },
+  view_footer: {
+    flex: 1,
+    backgroundColor: 'green',
+  },
+  view_txt_login: {
+    paddingTop: 20,
+  },
+  text_view: {
+    marginBottom: 110,
+  },
+});
+
+export const Wrapper = styled.View`
+  justify-content: space-between;
+  padding: 20px;
+  align-items: center;
+  flex-direction: column;
+`;
+export const Logo = styled.Image`
+  max-width: 100px;
+  width: 100px;
+  height: 100px;
+`;
+export const TextDescription = styled.Text`
+  letter-spacing: 3;
+  color: #f4f4f4;
+  text-align: center;
+  text-transform: uppercase;
+`;
+export const ButtonWrapper = styled.View`
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+`;
+export const Title = styled.Text`
+  color: #f4f4f4;
+  margin: 15% 0px 2px;
+  font-size: 17;
+  text-align: center;
+  font-weight: bold;
+  letter-spacing: 3;
+  margin-bottom: -20px;
+  font-family: poppins-Bold;
+`;
+const StyledButton = styled.TouchableHighlight`
+ width:250px;
+ background-color:${props => (props.transparent ? 'red' : 'red')};
+ padding:15px;
+border:${props => (props.transparent ? '1px solid #f3f8ff ' : 0)}
+ justify-content:center;
+ margin-bottom:20px;
+ border-radius:24px
+`;
+StyledTitle = styled.Text`
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: bold;
+  letter-spacing: 3;
+  color: '#fff';
+`;
+
+export const Button = ({onPress, color, ...props}) => {
+  return (
+    <StyledButton {...props}>
+      <StyledTitle {...props}>{props.title}</StyledTitle>
+    </StyledButton>
+  );
+};
+
+export default Login;
