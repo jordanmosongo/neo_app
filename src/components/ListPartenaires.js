@@ -59,7 +59,9 @@ const ListlogoPremuims = () => {
   }
 
   return (
-    <ScrollView style={{
+    <ScrollView 
+    showsVerticalScrollIndicator={false}
+    style={{
       width: '100%',
       paddingVertical: 20
     }}>
@@ -84,7 +86,7 @@ const ListlogoPremuims = () => {
                 }}>
                 {item}
               </Text>
-              <ScrollView>
+              <ScrollView showsVerticalScrollIndicator={false}>
                 <View style={{
                   flexDirection: 'row',
                   flexWrap: 'wrap',

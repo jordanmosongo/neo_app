@@ -125,7 +125,10 @@ export const MainHeader = (props) => {
   }, [refreshHeaderNotifNumber]);
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{
+      borderBottomRightRadius: props.noRadius ? 0 : props.bottomRightRadius || 50,
+      backgroundColor: COLORS.MAIN_BLUE,
+    }}>
       <View style={{ backgroundColor: '#fff' }}>
         <View style={{
           paddingHorizontal: 20,

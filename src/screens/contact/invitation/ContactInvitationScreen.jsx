@@ -97,7 +97,9 @@ export const ContactInvitationScreen = () => {
     <>
       {responseResult ?
         data.length > 0 ?
-          <ScrollView style={{ backgroundColor: '#fff' }}>
+          <ScrollView 
+          showsVerticalScrollIndicator={false}
+          style={{ backgroundColor: '#fff' }}>
             <View style={{
               flex: 1,
               marginHorizontal: 20

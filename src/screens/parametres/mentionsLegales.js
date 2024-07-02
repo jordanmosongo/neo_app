@@ -81,7 +81,7 @@ const MentionLegales = () => {
         />
       </View>
       {mentionData ?
-        <ScrollView style={{ backgroundColor: COLORS.WHITE }}>
+        <ScrollView showsVerticalScrollIndicator={false} style={{ backgroundColor: COLORS.WHITE }}>
           <View style={{
             borderColor: COLORS.MAIN_BLUE_LIGHT,
             borderTopWidth: 1,

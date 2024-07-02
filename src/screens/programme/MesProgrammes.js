@@ -26,6 +26,7 @@ import { MaiLoaderComponent } from '../../components/loaders/MainLoader';
 import { ManageStatusComponent } from '../../components/ManageStatusComponent';
 import { capitalizeStrOnFirstLetter } from '../../helpers/helperFunctions';
 import { TEST_ID } from 'react-native-gifted-chat';
+import { StatusBar } from 'react-native';
 
 const {width} = Dimensions.get('window');
 
@@ -212,6 +213,7 @@ function MesProgrammes() {
 
   return (
     <>
+    <StatusBar />
       <MainHeader
         withTitle={true}
         title="Programme"
@@ -234,7 +236,7 @@ function MesProgrammes() {
          flex: 1,
          backgroundColor: '#fff',
          padding: 8,
-         paddingTop: 0
+         paddingTop: 0,
        }}>
        <View
          style={{
@@ -285,10 +287,10 @@ function MesProgrammes() {
                    />
                  </View>
                  <ScrollView
-                   showsVerticalScrollIndicator={true}
+                   showsVerticalScrollIndicator={false}
                    style={{
                      maxHeight: 300,
-                     paddingVertical: 20
+                     paddingVertical: 20,
                    }}
                  >
                    {categoriesLabel.map((category, index) => {
@@ -399,7 +401,9 @@ function MesProgrammes() {
            </TouchableOpacity>
          </View>
        </View>    
-       <ScrollView>
+       <ScrollView 
+       showsVerticalScrollIndicator={false}
+      >
            <View style={{ marginHorizontal: 13 }}>
              {filteredPrograms.length > 0 ? (
                <>

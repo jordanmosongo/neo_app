@@ -182,6 +182,7 @@ const Dashboard = () => {
             <Text style={styles.txt}>Choisissez votre événement</Text>
           </View>
           <ScrollView
+            showsVerticalScrollIndicator={false}
             refreshControl={<RefreshControl
               refreshing={isRefreshing}
               onRefresh={async () => {

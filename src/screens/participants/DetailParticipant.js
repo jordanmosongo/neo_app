@@ -116,7 +116,7 @@ const Profil = ({ route }) => {
             paddingVertical={20}
           />
         </View>
-        <ScrollView style={{ backgroundColor: '#fff' }}>
+        <ScrollView showsVerticalScrollIndicator={false} style={{ backgroundColor: '#fff' }}>
           <View>
             <View style={{ flex: 1 }}>
               <View style={{

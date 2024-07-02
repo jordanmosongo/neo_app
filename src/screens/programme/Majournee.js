@@ -217,7 +217,7 @@ function Majournee() {
                         />
                       </View>
                       <ScrollView
-                        showsVerticalScrollIndicator={true}
+                        showsVerticalScrollIndicator={false}
                         style={{
                           maxHeight: 300,
                           paddingVertical: 20
@@ -320,7 +320,7 @@ function Majournee() {
 
             <View style={{ alignItems: 'flex-end', right: 32 }}></View>
 
-            <ScrollView>
+            <ScrollView showsVerticalScrollIndicator={false}>
               <View style={{ marginHorizontal: 13 }}>
                 {filteredProgramsJounee.length > 0 ? (
                   <>

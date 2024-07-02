@@ -46,9 +46,9 @@ export const BORDERS_WITH_SHADOWS = {
   PROGRAM_CARD: StyleSheet.create({
     borderRadius: 20,
     shadowColor: '#281D67',
-    shadowOpacity: Platform.OS === 'android' ? 0 : 2,
+    shadowOpacity: Platform.OS === 'android' ? 0 : 0,
     shadowRadius: 20,
-    elevation: Platform.OS === 'android' ? 0 : 2,
+    elevation: Platform.OS === 'android' ? 0 : 0,
     borderWidth: 0.8,
     borderColor: '#B7B3CC',
   }),

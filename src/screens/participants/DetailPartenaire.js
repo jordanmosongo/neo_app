@@ -123,7 +123,7 @@ const DetailPartenaire = ({ route }) => {
   }, [refreshNumber]);
 
   const intervention = (
-    <ScrollView>
+    <ScrollView showsVerticalScrollIndicator={false}>
       {exposantDetail?.interventions?.map((intervention, index) => {
         return (
           <>

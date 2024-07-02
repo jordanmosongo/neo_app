@@ -124,7 +124,7 @@ const MessageScreen = () => {
           onPress={() => setIsModalVisible(true)}
         />
       </View>}
-      {responseResult && <ScrollView style={{ backgroundColor: '#fff' }}>
+      {responseResult && <ScrollView showsVerticalScrollIndicator={false} style={{ backgroundColor: '#fff' }}>
         {filteredContacts.length > 0 ? <View style={styles.container} >
           {
             filteredContacts.map((element, index) => {

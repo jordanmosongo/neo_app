@@ -98,7 +98,9 @@ const Exposants = () => {
             inputWidth={width >= 600 ? '90%' : '90%'}
           />
         </View>
-        <ScrollView style={{ margin: 10 }}>
+        <ScrollView
+         showsVerticalScrollIndicator={false}
+         style={{ margin: 10 }}>
           <View>
             {filteredExposants.map((item, index) => {
               return (

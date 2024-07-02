@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, TextInput, Alert } from 'react-native';
+import { Text, View, TextInput, Alert, Platform } from 'react-native';
 import { styles } from './ModalStyles';
 import Modal from 'react-native-modal';
 import { Icon } from '@rneui/themed';
@@ -62,7 +62,11 @@ export const MessageModal = (props) => {
         backdropOpacity={1}
         backdropColor='#fff'
       >
+
         <View style={styles.modalContainer}>
+          {Platform.OS === 'ios' && <View style={{
+            height: 40,
+          }} />}
           <View style={styles.modalHeaderContainer}>
             <View style={{
               flexDirection: 'row',
@@ -128,7 +132,7 @@ export const MessageModal = (props) => {
                 </View>)}
             </View>
           </View>
-          {selectedContact === null ? (<ScrollView>
+          {selectedContact === null ? (<ScrollView showsVerticalScrollIndicator={false}>
             <View style={{
               flex: 1,
               marginVertical: 10,

@@ -161,7 +161,9 @@ const Home = () => {
         flex: 1,
         backgroundColor: COLORS.WHITE
       }}>
-        <ScrollView style={{
+        <ScrollView 
+        showsVerticalScrollIndicator={false}
+        style={{
           backgroundColor: '#fff',
         }}>
           <ImageBackground

@@ -189,6 +189,7 @@ const Participants = () => {
             </View>
           ) :
             (<FlatList
+              showsVerticalScrollIndicator={false}
               data={eventParticipants}
               renderItem={({ item, index }) => {
                 return (

@@ -60,7 +60,7 @@ export const AccountDeletionScreen = () => {
          />
        </View>
 
-       <ScrollView style={{
+       <ScrollView showsVerticalScrollIndicator={false} style={{
         flex: 1,
         backgroundColor: COLORS.WHITE,
         padding: 20

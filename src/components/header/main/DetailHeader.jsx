@@ -85,7 +85,10 @@ export const DetailHeader = (props) => {
   }, [refreshHeaderNotifNumber]);
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{
+      borderBottomRightRadius: props.bottomRightRadius || 50,
+      backgroundColor: '#271d67',
+    }}>
       <View style={{ backgroundColor: '#fff' }}>
         <View style={{
           paddingHorizontal: 20,

@@ -90,7 +90,7 @@ const Detailprogramme = () => {
           paddingVertical={20}
         />
       </View>
-      {!isLoading ? <ScrollView style={{ backgroundColor: '#fff' }}>
+      {!isLoading ? <ScrollView showsVerticalScrollIndicator={false} style={{ backgroundColor: '#fff' }}>
         <View
           style={{
             width: '100%',
@@ -234,7 +234,7 @@ const Detailprogramme = () => {
               Intervenants
             </Text>
           </View>
-          <ScrollView>
+          <ScrollView showsVerticalScrollIndicator={false}>
             {isLoading && (
               <View style={{ margin: 20 }}>
                 <MaiLoaderComponent />

@@ -78,7 +78,7 @@ const Contact = () => {
         title="Nous contacter"
         noBackAction={true}
        />
-      <ScrollView style={{ backgroundColor: '#fff' }}>
+      <ScrollView showsVerticalScrollIndicator={false} style={{ backgroundColor: '#fff' }}>
         <View style={{ marginHorizontal: 20, marginBottom: 0 }}>
           <BackNavigation 
             title={'Nous contacter'} 

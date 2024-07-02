@@ -42,7 +42,7 @@ export const FilterModal = (props) => {
               />
             </View>
             <ScrollView
-              showsVerticalScrollIndicator={true}
+              showsVerticalScrollIndicator={false}
               style={{
                 maxHeight: 300,
                 paddingVertical: 20

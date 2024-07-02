@@ -117,7 +117,7 @@ export const ContactListScreen = () => {
         </View>
       </View>}
       {(!isLoading && data.length === 0) && <EmptyListComponent message={'La liste des contacts est vide !'} />}
-      {(!isLoading && data.length > 0) && <ScrollView style={{ backgroundColor: '#fff' }}>
+      {(!isLoading && data.length > 0) && <ScrollView  showsVerticalScrollIndicator={false} style={{ backgroundColor: '#fff' }}>
         <View style={{
           flex: 1,
           marginBottom: 10,

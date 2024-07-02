@@ -157,7 +157,7 @@ const DetailLogoPartenaire = ({route}) => {
     </View>
   );
   const intervention = (
-    <ScrollView>
+    <ScrollView showsVerticalScrollIndicator={false}>
       {item.interventions.map(intervention => {
         return (
           <>
@@ -455,7 +455,7 @@ const DetailLogoPartenaire = ({route}) => {
           </View>
         </Pressable>
       </View> */}
-      <ScrollView style={{backgroundColor: '#fff'}}>
+      <ScrollView showsVerticalScrollIndicator={false} style={{backgroundColor: '#fff'}}>
         <View>
           <View style={{flex: 1}}>
             <View style={{paddingHorizontal: 35}}>

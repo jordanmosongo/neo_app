@@ -61,7 +61,7 @@ const Reglage = () => {
         title="Paramètres"
         noBackAction={true}
       />
-      {settings ? <ScrollView style={{ backgroundColor: '#fff' }}>
+      {settings ? <ScrollView showsVerticalScrollIndicator={false} style={{ backgroundColor: '#fff' }}>
         <View style={{ marginHorizontal: 20 }}>
           <BackNavigation
             title={'Paramètres'}

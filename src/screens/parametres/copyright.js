@@ -65,7 +65,7 @@ const Copyright = () => {
           paddingVertical={10}
         />
       </View>
-      {data ? <ScrollView style={{ backgroundColor: '#fff' }}>
+      {data ? <ScrollView showsVerticalScrollIndicator={false} style={{ backgroundColor: '#fff' }}>
         <View style={{
           borderColor: COLORS.MAIN_BLUE_LIGHT,
           borderTopWidth: 1,

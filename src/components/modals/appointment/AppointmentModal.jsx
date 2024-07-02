@@ -182,7 +182,9 @@ export const AppointmentModal = (props) => {
             </View>
 
           </View>
-          <ScrollView style={{
+          <ScrollView 
+          showsVerticalScrollIndicator={false}
+          style={{
             marginHorizontal: 20,
             paddingBottom: 10
           }}>
