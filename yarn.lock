@@ -7780,7 +7780,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lodash@npm:4, lodash@npm:^4.16.4, lodash@npm:^4.17.15, lodash@npm:^4.17.21":
+"lodash@npm:4, lodash@npm:^4.14.2, lodash@npm:^4.16.4, lodash@npm:^4.17.15, lodash@npm:^4.17.21":
   version: 4.17.21
   resolution: "lodash@npm:4.17.21"
   checksum: eb835a2e51d381e561e508ce932ea50a8e5a68f4ebdd771ea240d3048244a8d13658acbd502cd4829768c56f2e16bdd4340b9ea141297d472517b83868e677f7
@@ -8485,6 +8485,7 @@ __metadata:
     react-i18next: ^12.2.0
     react-native: 0.74.2
     react-native-accordion-list-view: ^2.0.1
+    react-native-camera-kit: ^13.0.0
     react-native-dialog: ^9.3.0
     react-native-drop-down-item: ^1.1.0
     react-native-element-dropdown: ^2.9.0
@@ -9402,6 +9403,18 @@ __metadata:
   dependencies:
     prop-types: ^15.7.2
   checksum: eb35821de36ae4eb00f97d99fc22ed79bd017248092ff1299f9d46a7ab946de16d2e6d6bfbf4cab5ef77d0d3bf47684aec761a7670ec7d36aae8d77ab8ddd171
+  languageName: node
+  linkType: hard
+
+"react-native-camera-kit@npm:^13.0.0":
+  version: 13.0.0
+  resolution: "react-native-camera-kit@npm:13.0.0"
+  dependencies:
+    lodash: ^4.14.2
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+  checksum: 5d795bf46935012d501d421c414cac24afd6ce4bd753ad4aedd621bbf5034650bfd6285bea0ae32e62d49316a5a8976b73676bcaefea7496abd3141f7337f382
   languageName: node
   linkType: hard
 

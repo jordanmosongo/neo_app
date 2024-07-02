@@ -7,6 +7,7 @@ import { Platform, View } from 'react-native';
 import { BackNavigation } from '../../components/buttons/back/BackNavigation';
 import { useNavigation } from '@react-navigation/native';
 import { COLORS, FONTS } from '../../constants/theme';
+import { ScannerScreen } from './ScannerScreen';
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -47,8 +48,8 @@ const Badgelecteur = () => {
           }}
           component={QrCode}
         />
-        <Tab.Screen name="Scanner un qrcode" component={ScanQrCode} />        
-       {/*  <Tab.Screen name="Scanner un qrcode" component={ScannerScreen} /> */}
+        {/* <Tab.Screen name="Scanner un qrcode" component={ScanQrCode} />         */}
+        <Tab.Screen name="Scanner un qrcode" component={ScannerScreen} />
       </Tab.Navigator>
     </>
   );
