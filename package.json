@@ -1,6 +1,6 @@
 {
   "name": "neo_app",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "android": "react-native run-android",
@@ -58,7 +58,7 @@
     "react-native-tab-view": "^3.5.1",
     "react-native-textarea": "^1.0.4",
     "react-native-toast-message": "^2.1.6",
-    "react-native-vector-icons": "^9.2.0",
+    "react-native-vector-icons": "^10.1.0",
     "react-native-video": "^5.2.1",
     "react-native-video-controls": "^2.8.1",
     "react-redux": "^8.0.5",

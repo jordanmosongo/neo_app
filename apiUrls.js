@@ -1,7 +1,7 @@
 /* const BASE_URL = 'http://neodev.kanieba.com';
 const BASE_SOCKET_URL = 'wss://noebo2.kanieba.com:8002'; */
 
-const BASE_URL = 'https://manage.neoevent.app';
+const BASE_URL = 'http://devneobo.kanieba.com:8881';
 const BASE_SOCKET_URL = 'wss://manage.neoevent.app:8001';
 
 export default {

@@ -147,7 +147,11 @@ const Dashboard = () => {
 
   return (
     <>
+     
       <View style={styles.backgroundImage}>
+      {Platform.OS === 'ios' && <View style={{
+        height: 30,
+      }} />}
         <View style={styles.icon}>
           <TouchableOpacity
             onPress={navigateToNofication}

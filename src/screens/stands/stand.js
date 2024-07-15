@@ -1,8 +1,8 @@
 /* eslint-disable prettier/prettier */
 
 import React, { useEffect, useState } from 'react';
+// import {WebView} from 'react-native-webview';
 import { View } from 'react-native';
-// import { WebView } from 'react-native-webview'
 import { MainHeader } from '../../components/header/main/MainHeader';
 import { COLORS } from '../../constants/theme';
 import { BackNavigation } from '../../components/buttons/back/BackNavigation';
@@ -11,6 +11,7 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 import { MaiLoaderComponent } from '../../components/loaders/MainLoader';
 import axios from 'axios';
 import { ManageStatusComponent } from '../../components/ManageStatusComponent';
+
 
 export const Stand = () => {
   const { selectedEvent } = useSelector((state) => state.user);
@@ -61,11 +62,10 @@ export const Stand = () => {
       {/* {!isLoading && <WebView
         scrollEnabled
         source={{ uri: route.params ? route.params.exposantPlan : selectedEvent.plan }}
+        style={{flex: 1}}
         setDisplayZoomControls={true}
         setBuiltInZoomControls={true}
         textZoom={100}
-        style={{
-        }}
         containerStyle={{
           flex: 1
         }}
