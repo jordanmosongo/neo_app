@@ -112,12 +112,13 @@ const Login = () => {
       dispatch(setConfigData(response.data));
       setConfigLoad(false);
     } catch (error) {
+      console.log('config error ', error);
       setResponseError(error);
     }
   };
 
   useEffect(() => {
-    fetchUser();
+    (async() => await fetchUser())();
   }, []);
 
   const customHTML = {
