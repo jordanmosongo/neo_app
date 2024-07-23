@@ -123,8 +123,7 @@ export const MessageModal = (props) => {
                 <View style={{...styles.selectedContactContainer}}>
                   <Text style={styles.selectedContactText}>{selectedContact.firstname} {selectedContact.name}</Text>
                   <Icon
-                    name="md-close-outline"
-                    type="ionicon"
+                    name="close"
                     size={26}
                     color="#fff"
                     style={{ marginLeft: 10 }}
