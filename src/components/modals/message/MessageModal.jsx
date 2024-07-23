@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Text, View, TextInput, Alert, Platform } from 'react-native';
 import { styles } from './ModalStyles';
 import Modal from 'react-native-modal';
-import { Icon } from '@rneui/themed';
+// import { Icon } from '@rneui/themed';
 import { ScrollView } from 'react-native-gesture-handler';
 import { ContactCard } from '../../cards/contact/ContactCard';
 import { ChatScreen } from '../../../screens/message/chat/ChatScreen';
@@ -10,6 +10,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { contactService } from '../../../services/contactService';
 import { setContactList, setRefreshNumber, setSelectedUser } from '../../../store/userSlice';
 import { COLORS, FONTS, TEXT_SIZES } from '../../../constants/theme';
+import Icon  from 'react-native-vector-icons/MaterialCommunityIcons';
+
 
 export const MessageModal = (props) => {
   const [selectedContact, setSelectedContact] = useState(null);
@@ -73,8 +75,7 @@ export const MessageModal = (props) => {
               alignItems: 'center',
             }}>
               <Icon
-                name="md-close-outline"
-                type="ionicon"
+                name="close"
                 size={30}
                 color={COLORS.MAIN_BLUE}
                 onPress={() => {

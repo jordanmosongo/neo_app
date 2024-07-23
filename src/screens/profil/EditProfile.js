@@ -133,24 +133,25 @@ const EditProfile = () => {
                     ? `${image.uri}`
                     : `${Helpers.getPhotoUrl(infos?.photo)}`,
               }}>
-              <Avatar.Accessory
+              {/* <Avatar.Accessory
                 Component={() => (
                   <Icon
                     size={26}
                     color="#000"
                     name="camera-outline"
                     onPress={async () => {
-                      // const result = await launchImageLibrary();
-                      // if (!result.didCancel) {
-                      //   setImage(result.assets[0]);
-                      // }
+                      return null
+                      const result = await launchImageLibrary();
+                      if (!result.didCancel) {
+                        setImage(result.assets[0]);
+                      }
                     }}
                     type="ionicon"
                   />
                 )}
                 size={40}
                 style={{ backgroundColor: '#fff', marginTop: 1 }}
-              />
+              /> */}
             </Avatar>
           </View>
           <View

@@ -161,7 +161,7 @@ const Settings = () => {
           handleConsent={async () => {
             await AsyncStorage.clear();
             dispatch(setUserLogout());
-           // dispatch(initializeStore());
+
             navigation.reset({
               index: 0,
               routes: [{ name: 'Login' }],
