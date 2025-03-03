@@ -1,7 +1,7 @@
 import { Platform, StyleSheet } from "react-native";
 
 export const COLORS = {
-  MAIN_BLUE: '#271d67',
+  MAIN_BLUE: '#17418d',  //'#271d67',
   MAIN_RED: '#e5352d',
   MAIN_BLUE_LIGHT: '#00a7d5',
   MAIN_DARK: '#e4e4e4',
@@ -36,10 +36,10 @@ export const SIZES = {
 };
 
 export const FONTS = {
-  POPPINS_BLACK: 'Poppins-Black',
-  POPPINS_BOLD: 'Poppins-Bold',
-  POPPINS_MEDIUM: 'Poppins-Medium',
-  POPPINS_REGULAR: 'Poppins-Regular',
+  POPPINS_BLACK: 'Barlow-Black',
+  POPPINS_BOLD: 'Barlow-Bold', // Poppins
+  POPPINS_MEDIUM: 'Barlow-Medium',
+  POPPINS_REGULAR: 'Barlow-Regular',
 };
 
 export const BORDERS_WITH_SHADOWS = {

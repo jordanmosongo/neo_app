@@ -14,7 +14,8 @@ const styles=StyleSheet.create({
     container:{
         flex:1,
         justifyContent:'center',
-        alignItems:'center'
+        alignItems:'center',
+      backgroundColor: COLORS.MAIN_BLUE,
     }
 })
 
@@ -66,7 +67,11 @@ export function SplashScreen(){
             <View style={styles.container}>
                 <Image
                     source={require('../components/assets/LOGO-NEO.png')}
-                    style={{width:150,height:150}}
+                    style={{
+                      width:150,
+                      height:150,
+                      resizeMode: "contain",
+                  }}
                 />
             </View>
         </React.Fragment>

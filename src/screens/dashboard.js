@@ -148,6 +148,7 @@ const Dashboard = () => {
   return (
     <>
       <View style={styles.backgroundImage}>
+        {Platform.OS === 'ios' && <View style={{height: 40}}/>}
         <View style={styles.icon}>
           <TouchableOpacity
             onPress={navigateToNofication}
@@ -166,20 +167,21 @@ const Dashboard = () => {
         </View>
         <View style={{ alignItems: 'center' }}>
           <Image
-            source={require('../components/assets/LOGO-NEO.png')}
+            source={require('../components/assets/NEO_BULL.png')}
             style={{
-              width: 160,
-              height: 110,
+              width: 200,
+              height: 150,
+              resizeMode: "contain"
             }}
           />
         </View>
         {hasLoaded ? <>
           <View style={{
             alignItems: 'center',
-            margin: 20,
+            margin: 30,
             marginTop: 0
           }}>
-            <Text style={styles.txt}>Choisissez votre événement</Text>
+            {/* <Text style={styles.txt}>Choisissez votre événement</Text> */}
           </View>
           <ScrollView
             showsVerticalScrollIndicator={false}
@@ -216,11 +218,11 @@ const Dashboard = () => {
               })}
             </View>
           </ScrollView>
-        </> : <MaiLoaderComponent backColor="#1E1760" color="#fff" />}
+        </> : <MaiLoaderComponent backColor={COLORS.MAIN_BLUE} color="#fff" />}
       </View>
       <View
         style={{
-          backgroundColor: '#281D68',
+          backgroundColor: COLORS.MAIN_BLUE, // '#281D68',
           position: 'absolute',
           flexDirection: 'row',
           padding: 5,
@@ -274,7 +276,7 @@ const Dashboard = () => {
 };
 const styles = StyleSheet.create({
   backgroundImage: {
-    backgroundColor: '#1E1760',
+    backgroundColor: COLORS.MAIN_BLUE, // '#1E1760',
     flex: 1,
   },
   txt: {

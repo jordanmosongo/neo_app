@@ -132,7 +132,7 @@ export const MainHeader = (props) => {
       <View style={{ backgroundColor: '#fff' }}>
         <View style={{
           paddingHorizontal: 20,
-          backgroundColor: '#271d67',
+          backgroundColor: COLORS.MAIN_BLUE , //'#271d67',
           borderBottomRightRadius: props.noRadius ? 0 : props.bottomRightRadius || 50
         }}>
           <View style={{
@@ -156,6 +156,7 @@ export const MainHeader = (props) => {
                     width: logoSize || 70,
                     height: logoSize || 70,
                     marginLeft: -5,
+                    resizeMode: 'contain',
                   }}
                 />
               </TouchableOpacity>

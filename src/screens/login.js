@@ -148,7 +148,7 @@ const Login = () => {
         />
         <View style={{
           ...styles.backgroundVideo,
-          backgroundColor: COLORS.MAIN_BLUE,
+          backgroundColor: "#17418d", // COLORS.MAIN_BLUE,
           opacity: 0.85
         }}></View>
         <View style={{
@@ -334,7 +334,7 @@ export const ButtonWrapper = styled.View`
 
 const StyledButton = styled.TouchableHighlight`
   width:100%;
-  background-color:${props => (props.transparent ? 'red' : 'red')};
+  background-color: #E84C13;
   padding:10px;
   border:${props => (props.transparent ? '1px solid #f3f8ff ' : 0)}
   justify-content:center;

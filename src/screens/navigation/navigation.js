@@ -112,7 +112,7 @@ const Navigation = ({navigation}) => {
         options={{
           headerShown: false,
           headerStyle: {
-            backgroundColor: '#271d67',
+            backgroundColor: COLORS.MAIN_BLUE, // '#271d67',
             borderBottomRightRadius: 50,
           },
           tabBarLabelStyle: {

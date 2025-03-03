@@ -49,9 +49,10 @@ const ActivityTile = (props) => {
         source={image}
         resizeMode="contain"
         style={{
-          width: width >= 600 ? 100 : 70,
-          height: width >= 600 ? 100 : 70,
-          resizeMode: 'contain'
+          width: width >= 600 ? 80 :  50,
+          height: width >= 600 ? 80 : 50,
+          resizeMode: 'contain',
+          marginBottom: 7,
         }}
       />
       <Text
@@ -175,7 +176,7 @@ const Home = () => {
               style={{
                 borderBottomRightRadius: 100,
                 backgroundColor: COLORS.MAIN_BLUE,
-                opacity: 0.85
+                opacity: 0.92
               }}>
               <View style={{
                 marginHorizontal: 40,

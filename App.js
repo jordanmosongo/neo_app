@@ -4,6 +4,7 @@ import { StatusBar, useColorScheme } from 'react-native';
 import RootNavigation from './src/screens/navigation/RootNavigation';
 
 import { useDispatch } from 'react-redux';
+import { COLORS } from './src/constants/theme';
 // import { setPlayerId } from './src/store/userSlice';
 // import { navigateWithoutParamsToScreen } from './OutSideNavigation';
 // import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -47,7 +48,7 @@ function App() {
     <>
       <StatusBar animated
         barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor='#271d67'
+        backgroundColor= {COLORS.MAIN_BLUE} // '#271d67'
       />
       <RootNavigation/>   
     </>
