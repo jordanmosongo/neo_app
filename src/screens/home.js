@@ -5,12 +5,12 @@ import {
   Dimensions,
   SafeAreaView,
   ScrollView,
+  TouchableOpacity
 } from 'react-native';
 import { View } from 'react-native';
 import React, { useState, useEffect } from 'react';
 import ListPartenaires from '../components/ListPartenaires';
 import { useSelector } from 'react-redux';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
 import { useParticipant } from '../hooks/useParticipant';
 import { useEventLogo } from '../hooks/useEventLogoPremuim';
@@ -33,8 +33,8 @@ const ActivityTile = (props) => {
     <TouchableOpacity
       style={{
         backgroundColor: color,
-        width: width >= 600 ? 260 : 140,
-        height: width >= 600 ? 160 : 95,
+        width: width >= 600 ? 260 : 150,
+        height: width >= 600 ? 160 : 105,
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 25,
@@ -88,28 +88,28 @@ const Home = () => {
       id: 1,
       text: 'Programme',
       image: require('../components/assets/PICTO__PROGRAMME.png'),
-      color: '#856AB1',
+      color: '#F8AD42',
       direction: 'Mesprogrammes',
     },
     {
       id: 2,
       text: 'Partenaires exposants',
       image: require('../components/assets/PICTO__PARTENAIRES.png'),
-      color: '#01BEE6',
+      color: '#1CACE4',
       direction: 'Exposants',
     },
     {
       id: 3,
       text: 'Ma journée',
       image: require('../components/assets/PICTO__JOURNEE.png'),
-      color: '#ff6600',
+      color: '#E84C13',
       direction: 'Majournee',
     },
     {
       id: 4,
       text: 'Participants',
       image: require('../components/assets/PICTO__PARTICIPANTS.png'),
-      color: '#009af4',
+      color: '#0078BC',
       direction: 'Participants',
     },
     {
@@ -123,7 +123,7 @@ const Home = () => {
       id: 6,
       text: 'Plan de stands',
       image: require('../components/assets/PICTO__PLAN_STAND.png'),
-      color: '#ff409d',
+      color: '#C01630',
       direction: 'Stand',
     },
   ];
@@ -168,15 +168,19 @@ const Home = () => {
           backgroundColor: '#fff',
         }}>
           <ImageBackground
-            source={{ uri: configData?.barre_navigation }}
-            resizeMode='cover'
-            imageStyle={{ borderBottomRightRadius: 100 }}
+            // source={{ uri: configData?.barre_navigation }}
+            source={require('../components/assets/bandeau.jpg')}
+            resizeMode="cover"
+            imageStyle={{ 
+              borderBottomRightRadius: 100,
+              // height: 500,
+           }}
             borderBottomRightRadius={100}>
             <View
               style={{
                 borderBottomRightRadius: 100,
-                backgroundColor: COLORS.MAIN_BLUE,
-                opacity: 0.92
+                // backgroundColor: COLORS.MAIN_BLUE,
+               // opacity: 0.95
               }}>
               <View style={{
                 marginHorizontal: 40,

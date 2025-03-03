@@ -169,8 +169,8 @@ const Dashboard = () => {
           <Image
             source={require('../components/assets/NEO_BULL.png')}
             style={{
-              width: 200,
-              height: 150,
+              width: 250,
+              height: 200,
               resizeMode: "contain"
             }}
           />

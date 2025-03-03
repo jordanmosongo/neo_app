@@ -28,41 +28,81 @@ export const MainHeader = (props) => {
     switch (props.imageNameFor) {
       case 'PARTICIPANTS':
         return (
-          <Avatar
-            size={60}
-            rounded
-            source={require('../../../components/assets/PICTO__PARTICIPANTS.png')}
-          />)
+          <Image
+          source={require('../../../components/assets/PICTO__PARTICIPANTS.png')}
+          resizeMode="contain"
+          style={{
+            width: 60,
+            height: 60
+          }}
+        />
+          // <Avatar
+          //   size={60}
+          //   rounded
+          //   source={require('../../../components/assets/PICTO__PARTICIPANTS.png')}
+          // />
+        )
       case 'EXPOSANTS':
         return (
-          <Avatar
-            size={60}
-            rounded
-            source={require('../../../components/assets/PICTO__PARTENAIRES.png')}
-          />)
+          <Image
+          source={require('../../../components/assets/PICTO__PARTENAIRES.png')}
+          resizeMode="contain"
+          style={{
+            width: 60,
+            height: 60
+          }}
+        />
+          // <Avatar
+          //   size={60}
+          //   rounded
+          //   source={require('../../../components/assets/PICTO__PARTENAIRES.png')}
+          // />
+        )
       case 'PROGRAMME':
         return (
-          <Avatar
-            size={60}
-            rounded
+          <Image
             source={require('../../../components/assets/PICTO__PROGRAMME.png')}
-          />)
+            resizeMode="contain"
+            style={{
+              width: 60,
+              height: 60
+            }}
+          />
+        )
 
       case 'MAJOURNEE':
         return (
-          <Avatar
-            size={60}
-            rounded
-            source={require('../../../components/assets/PICTO__JOURNEE.png')}
-          />)
+          <Image
+          source={require('../../../components/assets/PICTO__JOURNEE.png')}
+          resizeMode="contain"
+          style={{
+            width: 60,
+            height: 60
+          }}
+        />
+          // <Avatar
+          //   size={60}
+          //   rounded
+          //   source={require('../../../components/assets/PICTO__JOURNEE.png')}
+          // />
+        )
 
       case 'MESSAGE':
         return (
-          <Avatar
-            size={60}
-            rounded
-            source={require('../../../components/assets/images/pictos/PICTO__MESSAGE_ROND_WEB.png')}
-          />)
+          <Image
+          source={require('../../../components/assets/PICTO__MESSAGE_ROND_WEB.png')}
+          resizeMode="contain"
+          style={{
+            width: 60,
+            height: 60
+          }}
+        />
+          // <Avatar
+          //   size={60}
+          //   rounded
+          //   source={require('../../../components/assets/images/pictos/PICTO__MESSAGE_ROND_WEB.png')}
+          // />
+        )
       default:
         break;
     }
@@ -70,7 +110,7 @@ export const MainHeader = (props) => {
 
   function handle() {
     if (noClickOnLogo) {
-      return navigation.navigate('Login');       
+      return navigation.navigate('Login');
     }
     if (selectedEvenementId === '') {
       navigation.navigate('Dashboard');
@@ -132,7 +172,7 @@ export const MainHeader = (props) => {
       <View style={{ backgroundColor: '#fff' }}>
         <View style={{
           paddingHorizontal: 20,
-          backgroundColor: COLORS.MAIN_BLUE , //'#271d67',
+          backgroundColor: COLORS.MAIN_BLUE, //'#271d67',
           borderBottomRightRadius: props.noRadius ? 0 : props.bottomRightRadius || 50
         }}>
           <View style={{
@@ -218,7 +258,10 @@ export const MainHeader = (props) => {
                 </View>
               </View>
               {props.withImage && <View
-                style={{ backgroundColor: props.pictoBgColor || '#009af4', borderRadius: 30 }}>
+                style={{ 
+                  backgroundColor: props.pictoBgColor || '#009af4', 
+                  borderRadius: 30,
+               }}>
                 <GetAvatar />
               </View>}
             </View>}
