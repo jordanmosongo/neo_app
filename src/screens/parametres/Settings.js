@@ -100,10 +100,12 @@ const Settings = () => {
           <View>
             <Text
               style={{
-                fontSize: 16,
-                color: '#271d67',
+                fontSize: 20,
+                color: COLORS.MAIN_BLUE,
                 fontFamily: FONTS.POPPINS_BOLD,
-                marginTop: 10
+                marginTop: 10,
+                marginBottom: 5,
+                fontWeight: 'bold',
               }}>
               {`${infos?.user?.prenom} ${infos?.user?.nom}`}
             </Text>
@@ -176,7 +178,7 @@ const Settings = () => {
           <TouchableOpacity
             onPress={() => setVisible(true)}
             style={{
-              backgroundColor: COLORS.MAIN_RED,
+              backgroundColor: "#E94F15",
               paddingVertical: 4,
               paddingHorizontal: 20,
               borderRadius: 50,

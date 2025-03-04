@@ -50,10 +50,10 @@ const Navigation = ({navigation}) => {
       
       screenOptions={{
         tabBarShowLabel: true,
-        tabBarActiveTintColor: '#00A7D5',
+        tabBarActiveTintColor: '#E94F15',
         tabBarInactiveTintColor: '#D8D8D8',
         tabBarLabelStyle: {
-          fontSize: 12,
+          fontSize: 13,
         },
         headerShown: true,
         tabBarStyle: {
@@ -154,7 +154,7 @@ const Navigation = ({navigation}) => {
         }}
       />
       <Tab.Screen
-        name="Mon compte"
+        name="Mon comptes"
         component={Settings}
         options={{
           headerShown: false,

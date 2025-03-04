@@ -51,13 +51,13 @@ const CustomBottomTabItem1 = (props) => {
 
   return (
     <>
-     <AlertModal
-      isAlertVisible={alertInfo.visible}
-      title={alertInfo.title}
-      confirmMessage={alertInfo.message}
-      closeAlert={() => {
-        setAlertInfo((prevState) => ({ ...prevState, visible: false }));
-      }}/>
+      <AlertModal
+        isAlertVisible={alertInfo.visible}
+        title={alertInfo.title}
+        confirmMessage={alertInfo.message}
+        closeAlert={() => {
+          setAlertInfo((prevState) => ({ ...prevState, visible: false }));
+        }} />
 
       <TouchableOpacity
         disabled={notVisible}
@@ -103,8 +103,8 @@ const Dashboard = () => {
   const fetchEvents = async () => {
     try {
       setIsRefreshing(true);
-       const {data} = await axios.get(apiUrls.baseEvent, {
-        headers: {Authorization: `JWT ${tokens.access}`}
+      const { data } = await axios.get(apiUrls.baseEvent, {
+        headers: { Authorization: `JWT ${tokens.access}` }
       })
       setEvenements(data);
       setHasLoaded(true);
@@ -127,9 +127,9 @@ const Dashboard = () => {
     }
   }
 
-  const fetchConfig = async() => {
+  const fetchConfig = async () => {
     try {
-      const {data} = await axios.get(`${apiUrls.pageConfigurationBase}`);
+      const { data } = await axios.get(`${apiUrls.pageConfigurationBase}`);
       dispatch(setConfigData(data));
     } catch (error) {
       console.log('error on fetch configurations', error);
@@ -148,7 +148,7 @@ const Dashboard = () => {
   return (
     <>
       <View style={styles.backgroundImage}>
-        {Platform.OS === 'ios' && <View style={{height: 40}}/>}
+        {Platform.OS === 'ios' && <View style={{ height: 40 }} />}
         <View style={styles.icon}>
           <TouchableOpacity
             onPress={navigateToNofication}
@@ -169,8 +169,8 @@ const Dashboard = () => {
           <Image
             source={require('../components/assets/NEO_BULL.png')}
             style={{
-              width: 250,
-              height: 200,
+              width: 300,
+              height: 150,
               resizeMode: "contain"
             }}
           />

@@ -146,7 +146,7 @@ const Profil = (props) => {
                     }}
                     style={{
                       width: 100,
-                      backgroundColor: '#ff0e0e',
+                      backgroundColor: '#E94F15',
                       paddingVertical: 5,
                       borderRadius: 25,
                       marginBottom: 25,
@@ -180,10 +180,11 @@ const Profil = (props) => {
                 <Text
                   numberOfLines={3}
                   style={{
-                    fontSize: TEXT_SIZES.CONTACT_CARD_FIRST_TITLE,
-                    color: COLORS.MAIN_BLUE,
+                    fontSize: 20,// TEXT_SIZES.CONTACT_CARD_FIRST_TITLE,
+                    color: '#18418D', // COLORS.MAIN_BLUE,
                     fontFamily: 'Poppins-Bold',
                     maxWidth: 250,
+                    fontWeight: 'bold',
                   }}>
                   {`${infos?.user?.prenom} ${infos?.user?.nom}`}
                 </Text>

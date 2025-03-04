@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setNbreOfNotifications, setRefreshHeaderNotifNumber } from '../../../store/userSlice';
 import { userServices } from '../../../services/userServices';
 import apiUrls from '../../../../apiUrls';
+import { COLORS } from '../../../constants/theme';
 
 export const DetailHeader = (props) => {
   const { logoSize, hideNotifIcon, guestId } = props;
@@ -87,7 +88,7 @@ export const DetailHeader = (props) => {
   return (
     <SafeAreaView style={{
       borderBottomRightRadius: props.bottomRightRadius || 50,
-      backgroundColor: '#271d67',
+      backgroundColor: COLORS.MAIN_BLUE,
     }}>
       <View style={{ backgroundColor: '#fff' }}>
         <View style={{

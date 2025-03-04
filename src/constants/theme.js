@@ -1,8 +1,8 @@
 import { Platform, StyleSheet } from "react-native";
 
 export const COLORS = {
-  MAIN_BLUE: '#17418d',  //'#271d67',
-  MAIN_RED: '#e5352d',
+  MAIN_BLUE: '#17418d',  //'#271d67'
+  MAIN_RED: '#E94F15', // '#e5352d',
   MAIN_BLUE_LIGHT: '#00a7d5',
   MAIN_DARK: '#e4e4e4',
   ORANGE: '#FF6501',
