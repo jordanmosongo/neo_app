@@ -51,7 +51,7 @@ export const DetailHeader = (props) => {
       dispatch(setNbreOfNotifications(notifNbreToShow));
     } catch (error) {
       // setError(error);
-      console.log('An error occured while updating notifs nbre', error);
+      console.log('An error occured while updating notif nbre', error);
     }
   }
 
