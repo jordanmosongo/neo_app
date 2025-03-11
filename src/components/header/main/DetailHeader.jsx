@@ -93,7 +93,7 @@ export const DetailHeader = (props) => {
       <View style={{ backgroundColor: '#fff' }}>
         <View style={{
           paddingHorizontal: 20,
-          backgroundColor: '#271d67',
+          backgroundColor: COLORS.MAIN_BLUE, // '#271d67',
           borderBottomRightRadius: props.bottomRightRadius || 50
         }}>
           <View style={{
@@ -116,7 +116,8 @@ export const DetailHeader = (props) => {
                   style={{
                     width: logoSize || 70,
                     height: logoSize || 70,
-                    marginLeft: -5
+                    marginLeft: -5,
+                    resizeMode: "contain"
                   }}
                 />
               </Pressable>
