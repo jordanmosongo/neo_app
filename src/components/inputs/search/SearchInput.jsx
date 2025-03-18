@@ -10,18 +10,19 @@ export const SearchInput = (props) => {
         <>
           <Searchbar
             placeholder={placeholder}
-            placeholderTextColor={'#938EB3'}
+            placeholderTextColor={'#7F93B9'}
             onChangeText={(val) => {
               setSearch(val);
               onChangeSearch(val)
             }}
             value={search}
             style={{width: inputWidth ||'85%', height: 40, backgroundColor: COLORS.MAIN_DARK, color: '#A6A6A6',fontFamily: 'Poppins-Regular',}}
-            iconColor='#7872A0'
+            iconColor='#73738C'
             inputStyle={{
               minHeight: inputHeight,
               maxHeight: inputHeight,
-              //fontFamily: FONTS.POPPINS_REGULAR,
+              fontFamily: FONTS.POPPINS_REGULAR,
+              fontSize: 16,
             }}
           />
         </>

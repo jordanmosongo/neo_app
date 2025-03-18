@@ -35,7 +35,7 @@ export const ExposantItem = ({ exposant }) => {
             flexDirection: 'row',
           }}>
           <Image
-            style={{ width: 50, height: 50, resizeMode: 'contain', marginRight: 5 }}
+            style={{ width: 60, height: 60, resizeMode: 'contain', marginRight: 5 }}
             source={{ uri: exposant.logo }}
           />
           <View style={{ margin: 5 }}>
@@ -43,8 +43,11 @@ export const ExposantItem = ({ exposant }) => {
               numberOfLines={2}
               style={{
                 color: COLORS.MAIN_BLUE,
-                fontFamily: FONTS.POPPINS_REGULAR,
-                maxWidth: 185,                
+                fontFamily: FONTS.POPPINS_BOLD,
+                fontSize: 17,
+                maxWidth: 280,
+                lineHeight: 22,  
+                paddingBottom: 3,              
               }}>
               {capitalizeStrOnFirstLetter(exposant.nom)}
             </Text>
@@ -55,7 +58,8 @@ export const ExposantItem = ({ exposant }) => {
                   color: COLORS.MAIN_BLUE,
                   textAlign: 'left',
                   fontSize: TEXT_SIZES.PARAGRAPH,
-                  maxWidth: 180
+                  fontWeight: '500',
+                  maxWidth: 280
                 }}>
                 {capitalizeStrOnFirstLetter(exposant.domaine)}
               </Text>
