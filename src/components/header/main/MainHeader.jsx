@@ -29,39 +29,29 @@ export const MainHeader = (props) => {
       case 'PARTICIPANTS':
         return (
           <Image
-          source={require('../../../components/assets/PICTO__PARTICIPANTS.png')}
+          source={require('../../../components/assets/CLIENTS.png')}
           resizeMode="contain"
           style={{
             width: 60,
             height: 60
           }}
         />
-          // <Avatar
-          //   size={60}
-          //   rounded
-          //   source={require('../../../components/assets/PICTO__PARTICIPANTS.png')}
-          // />
         )
       case 'EXPOSANTS':
         return (
           <Image
-          source={require('../../../components/assets/PICTO__PARTENAIRES.png')}
+          source={require('../../../components/assets/PICTO__PARTENAIRES_ROND.png')}
           resizeMode="contain"
           style={{
             width: 60,
             height: 60
           }}
         />
-          // <Avatar
-          //   size={60}
-          //   rounded
-          //   source={require('../../../components/assets/PICTO__PARTENAIRES.png')}
-          // />
         )
       case 'PROGRAMME':
         return (
           <Image
-            source={require('../../../components/assets/PICTO__PROGRAMME.png')}
+            source={require('../../../components/assets/PICTO__PROGRAMME_ROND.png')}
             resizeMode="contain"
             style={{
               width: 60,
@@ -73,18 +63,13 @@ export const MainHeader = (props) => {
       case 'MAJOURNEE':
         return (
           <Image
-          source={require('../../../components/assets/PICTO__JOURNEE.png')}
+          source={require('../../../components/assets/PICTO__JOURNEE_ROND.png')}
           resizeMode="contain"
           style={{
             width: 60,
             height: 60
           }}
         />
-          // <Avatar
-          //   size={60}
-          //   rounded
-          //   source={require('../../../components/assets/PICTO__JOURNEE.png')}
-          // />
         )
 
       case 'MESSAGE':
@@ -97,11 +82,17 @@ export const MainHeader = (props) => {
             height: 60
           }}
         />
-          // <Avatar
-          //   size={60}
-          //   rounded
-          //   source={require('../../../components/assets/images/pictos/PICTO__MESSAGE_ROND_WEB.png')}
-          // />
+        )
+        case 'STAND':
+        return (
+          <Image
+          source={require('../../../components/assets/STAND_ROND.png')}
+          resizeMode="contain"
+          style={{
+            width: 60,
+            height: 60
+          }}
+        />
         )
       default:
         break;

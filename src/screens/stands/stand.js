@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { View } from 'react-native';
-// import { WebView } from 'react-native-webview'
+import { WebView } from 'react-native-webview'
 import { MainHeader } from '../../components/header/main/MainHeader';
 import { COLORS } from '../../constants/theme';
 import { BackNavigation } from '../../components/buttons/back/BackNavigation';
@@ -45,7 +45,10 @@ export const Stand = () => {
       <MainHeader
         withTitle={true}
         title="Plan des stands" 
-        noBackAction={true} />
+        noBackAction={true}
+        withImage={true}
+        imageNameFor="STAND"
+         />
       <View style={{ paddingHorizontal: 20, backgroundColor: COLORS.WHITE }}>
         <BackNavigation
           title={route.params ? 'Plan du stand' : 'Plan des stands'}
@@ -58,7 +61,7 @@ export const Stand = () => {
       }}>
         <MaiLoaderComponent />
       </View>}
-      {/* {!isLoading && <WebView
+      {!isLoading && <WebView
         scrollEnabled
         source={{ uri: route.params ? route.params.exposantPlan : selectedEvent.plan }}
         setDisplayZoomControls={true}
@@ -69,7 +72,7 @@ export const Stand = () => {
         containerStyle={{
           flex: 1
         }}
-      />} */}
+      />}
       {((responseError?.request || responseError?.response) && !responseResult) && (
         <ManageStatusComponent
           error={responseError}

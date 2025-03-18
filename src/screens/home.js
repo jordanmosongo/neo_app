@@ -33,8 +33,8 @@ const ActivityTile = (props) => {
     <TouchableOpacity
       style={{
         backgroundColor: color,
-        width: width >= 600 ? 260 : 150,
-        height: width >= 600 ? 160 : 105,
+        width: width >= 600 ? 290 : 180,
+        height: width >= 600 ? 190 : 135,
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 25,
@@ -49,8 +49,8 @@ const ActivityTile = (props) => {
         source={image}
         resizeMode="contain"
         style={{
-          width: width >= 600 ? 80 :  50,
-          height: width >= 600 ? 80 : 50,
+          width: width >= 600 ? 110 :  80,
+          height: width >= 600 ? 110 : 80,
           resizeMode: 'contain',
           marginBottom: 7,
         }}
@@ -61,7 +61,8 @@ const ActivityTile = (props) => {
           color: '#ffffff',
           maxWidth: '100%',
           textAlign: 'center',
-          top: -10,
+          fontSize: 14,
+          fontWeight: 'bold',
         }}>
         {text}
       </Text>
@@ -168,19 +169,15 @@ const Home = () => {
           backgroundColor: '#fff',
         }}>
           <ImageBackground
-            // source={{ uri: configData?.barre_navigation }}
             source={require('../components/assets/bandeau.jpg')}
             resizeMode="cover"
             imageStyle={{ 
               borderBottomRightRadius: 100,
-              // height: 500,
            }}
             borderBottomRightRadius={100}>
             <View
               style={{
                 borderBottomRightRadius: 100,
-                // backgroundColor: COLORS.MAIN_BLUE,
-               // opacity: 0.95
               }}>
               <View style={{
                 marginHorizontal: 40,
@@ -189,17 +186,20 @@ const Home = () => {
                 <Text
                   style={{
                     color: COLORS.WHITE,
-                    fontSize: 18,
+                    fontSize: 22,
                     fontFamily: FONTS.POPPINS_BOLD,
-                    textAlign: 'center'
+                    textAlign: 'center',
+                    marginVertical: 10,
                   }}>
                   {selectedEvent?.nom}
                 </Text>
                 <Text style={{
                   color: COLORS.WHITE,
-                  fontSize: 15,
+                  fontSize: 16,
                   fontFamily: FONTS.POPPINS_REGULAR,
-                  textAlign: 'center'
+                  textAlign: 'center',
+                  fontWeight: '500',
+                  marginBottom: 22,
                 }}>{selectedEvent.lieu_evenement ? `${formatEventDate(selectedEvent?.date)}, ${selectedEvent.lieu_evenement}` : `${formatEventDate(selectedEvent?.date)}`}</Text>
 
               </View>
@@ -207,10 +207,9 @@ const Home = () => {
                 style={{
                   flexDirection: 'row',
                   justifyContent: 'center',
-                  marginHorizontal: 20,
-                  gap: 10,
-                  paddingBottom: 30,
-                  flexWrap: 'wrap'
+                  gap: 20,
+                  paddingBottom: 50,
+                  flexWrap: 'wrap',
                 }}>
                 {dummyActivities.map(activity => (
                   <ActivityTile
