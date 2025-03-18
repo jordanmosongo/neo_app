@@ -27,6 +27,7 @@ import { ConfirmationModal } from '../../components/modals/confirmation/Confirma
 import { MainHeader } from '../../components/header/main/MainHeader';
 import { AlertModal } from '../../components/modals/alert/AlertModal';
 import { capitalizeStrOnFirstLetter } from '../../helpers/helperFunctions';
+import { Accordion } from '../../components/exposants/Accordion';
 
 const CustomDivider = () => {
   return (<>
@@ -40,40 +41,6 @@ const CustomDivider = () => {
     </View>
   </>)
 }
-
-const Accordion = ({ title, children }) => {
-  const [isOpen, setIsOpen] = useState(true);
-
-  const toggleOpen = () => {
-    setIsOpen(value => !value);
-    LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
-  };
-
-  return (
-    <>
-      <TouchableOpacity
-        onPress={toggleOpen}
-        style={{
-          alignItems: 'center',
-          flexDirection: 'row',
-          marginVertical: 10,
-        }}
-        activeOpacity={0.6}>
-        {title}
-        <Icon
-          style={{ marginLeft: 10 }}
-          color="#00c3ff"
-          name={isOpen ? 'chevron-down' : 'chevron-right'}
-          size={12}
-          type="font-awesome"
-        />
-      </TouchableOpacity>
-      <View style={[styles.list, !isOpen ? styles.hidden : undefined]}>
-        {children}
-      </View>
-    </>
-  );
-};
 
 const DetailPartenaire = ({ route }) => {
   const [exposantDetail, setExposantDetail] = useState(null);
@@ -95,16 +62,10 @@ const DetailPartenaire = ({ route }) => {
       const { data } = await axios.get(`${apiUrls.baseUrl}/api/evenement/${selectedEvenementId}/exposant/${route.params.id}`, {
         headers: { Authorization: `JWT ${tokens.access}` }
       });
-      console.log('exposant detail', Object.keys(data));
-      console.log('exposant detail', {
-        nom: data.nom,
-        coordonnee: data.coordonnee
-      })
       setExposantDetail(data);
       setIsLoading(false);
     } catch (error) {
       const errorCode = error.code;
-      console.log('error occured on fetch exposant', error);
       if (errorCode === 'ERR_BAD_REQUEST') {
         console.log('show alert here');
         setAlertInfo({
@@ -112,8 +73,6 @@ const DetailPartenaire = ({ route }) => {
           title: 'Information',
           message: "Cette organisation n'a pas de fiche profil !"
         })
-      } else {
-        console.log('error occured on fetch exposant', error);
       }
     }
   }
@@ -537,20 +496,24 @@ const DetailPartenaire = ({ route }) => {
                   fontSize: 16,
                   color: COLORS.MAIN_BLUE,
                   fontFamily: FONTS.POPPINS_BOLD,
-                  marginBottom: 3,
-                  maxWidth: 250
+                  fontSize: 17,
+                  maxWidth: 280,
+                  lineHeight: 22,  
+                  paddingBottom: 3,   
                 }}>
-                {exposantDetail?.nom}
+                {capitalizeStrOnFirstLetter(exposantDetail?.nom)}
               </Text>
               <Text
                 numberOfLines={1}
                 style={{ 
-                  fontSize: TEXT_SIZES.PARAGRAPH, 
-                  color: COLORS.MAIN_BLUE, 
                   fontFamily: FONTS.POPPINS_REGULAR,
-                  maxWidth: 200
+                  color: COLORS.MAIN_BLUE,
+                  textAlign: 'left',
+                  fontSize: TEXT_SIZES.PARAGRAPH,
+                  fontWeight: '500',
+                  maxWidth: 280
                 }}>
-                {exposantDetail?.domaine}
+                {capitalizeStrOnFirstLetter(exposantDetail?.domaine)}
               </Text>
               {(exposantDetail?.stand && exposantDetail?.stand.description !== "") && <TouchableOpacity
                 onPress={() => {
@@ -576,6 +539,7 @@ const DetailPartenaire = ({ route }) => {
               </TouchableOpacity>}
             </View>
           </View>
+        
           <View style={styles.container}>
             {/* Contact */}
             <CustomDivider />
@@ -738,26 +702,29 @@ const styles = StyleSheet.create({
     elevation: 5
   },
   image: {
-    width: 50,
-    height: 50,
+    width: 65,
+    height: 65,
     borderRadius: 50,
+    resizeMode: "cover",
   },
   details: {
     marginLeft: 10,
     justifyContent: 'center',
   },
   name: {
-    fontSize: 14,
+    fontSize: 16,
     color: COLORS.MAIN_BLUE,
     fontFamily: FONTS.POPPINS_BOLD,
     maxWidth: 200,
+    marginBottom: 2
   },
   jobTitle: {
-    fontSize: 13,
+    fontSize: 14,
     color: COLORS.MAIN_BLUE,
     fontFamily: FONTS.POPPINS_REGULAR,
     maxWidth: 180,
-    lineHeight: 22
+    lineHeight: 22,
+    fontWeight: "600"
   },
   videoPlayer: {
     height: Dimensions.get('screen').width * 0.5625,

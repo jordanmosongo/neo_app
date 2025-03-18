@@ -3,15 +3,6 @@ import {setUserProfil} from '../redux/reducers/UserReducers';
 import {isEmpty, upperFirst, upperCase} from 'lodash';
 
 class UserHelper {
-  /* async setStorage(request) {
-    let response = true;
-    await AsyncStorage.setItem('@USER', request, error => {
-      if (!isEmpty(error)) {
-        response = false;
-      }
-    });
-    return response;
-  } */
   async setStorage(user) {
     await AsyncStorage.setItem('@USER',JSON.stringify(user) );
   }
