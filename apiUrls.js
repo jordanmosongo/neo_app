@@ -5,6 +5,9 @@ const BASE_URL = 'https://manage.neoevent.app';
 const BASE_SOCKET_URL = 'wss://manage.neoevent.app:8001';
 
 export default {
+    apiBase: `${BASE_URL}/api`,
+    baseUrl: BASE_URL,
+
     baseSocketUrl: `${BASE_SOCKET_URL}`,
     contacts: `${BASE_URL}/api/contacts`,
     contactBase: `${BASE_URL}/api/contact`,
@@ -24,6 +27,7 @@ export default {
     standBase: `${BASE_URL}/api/stand`,
     pushNotificationBase: `${BASE_URL}/api/pushnotification`,
     pageConfigurationBase: `${BASE_URL}/api/configurations-pages`,
-    apiBase: `${BASE_URL}/api`,
-    baseUrl: BASE_URL 
+    interests: `${BASE_URL}/api/centre-interet`,
+
+    
 }

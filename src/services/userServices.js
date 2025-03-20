@@ -51,9 +51,6 @@ export const userServices = {
   },
 
   getEvenements: async accessToken => {
-    /* console.log('event data request', {
-      url: apiUrls.baseEvent,      
-    }) */
     const {data} = await axios.get(
       apiUrls.baseEvent,
       {headers: {Authorization: `JWT ${accessToken}`}},
@@ -137,6 +134,14 @@ export const userServices = {
     if (data.photo) {
       bodyFormData.append('photo', data.photo);
     }
+
+    if (data.centreInterests) {
+      for (const interest of data.centreInterests) {
+        bodyFormData.append('centreinterets', interest);
+      }
+    }
+
+    bodyFormData.append('fonction', data.fonction);
 
     const response = await axios.post(
       `${apiUrls.baseParticipant}/${data.user_id}/update`,

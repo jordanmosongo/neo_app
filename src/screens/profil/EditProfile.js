@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
@@ -13,19 +13,20 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setParticipantInfos } from '../../store/userSlice';
 import { Avatar } from '@rneui/base';
 import { Icon } from 'react-native-elements';
-
-// import { launchImageLibrary } from 'react-native-image-picker';
+import { RichEditor, RichToolbar, actions } from "react-native-pell-rich-editor";
+import { launchImageLibrary } from 'react-native-image-picker';
+import { } from "react-native-pell-rich-editor";
 import { Helpers } from '../../helpers/helpers';
 import { userServices } from '../../services/userServices';
-import styled from 'styled-components/native';
 import { useNavigation } from '@react-navigation/native';
 import { BackNavigation } from '../../components/buttons/back/BackNavigation';
 import MainButton from '../../components/buttons/main/MainButton';
-import { DetailHeader } from '../../components/header/main/DetailHeader';
 import { COLORS } from '../../constants/theme';
 import { ManageStatusComponent } from '../../components/ManageStatusComponent';
 import { AlertModal } from '../../components/modals/alert/AlertModal';
 import { MainHeader } from '../../components/header/main/MainHeader';
+import SelectDropdown from "react-native-select-dropdown";
+import { SelectPickerInput } from '../../components/inputs/SelectInput';
 
 const EditProfile = () => {
   const { tokens, infos } = useSelector(state => state.user);
@@ -36,13 +37,13 @@ const EditProfile = () => {
   const [responseError, setResponseError] = useState(null);
   const [responseResult, setResponseResult] = useState(null);
   const [nbreOfRepetitions, setNbreOfRepetitions] = useState(0);
+  const [centreInterests, setCentreInterests] = useState([]);
+  const [fonction, setFonction] = useState(null);
   const [alertInfo, setAlertInfo] = useState({
     visible: false,
     title: 'Titre',
     message: 'message'
   });
-
-  // console.log('infos', infos.reseausociaux);
 
   const [linkedinUrl, setLinkedinUrl] = useState(
     infos.reseausociaux.filter(value => value && value.nom === 'twi')[0].url,
@@ -82,34 +83,40 @@ const EditProfile = () => {
               : image,
           linkedin_social_networks: linkedinUrl,
           twitter_social_networks: twitterUrl,
+          centreInterests,
+          fonction,
         },
         tokens.access,
       )
       .then((res) => {
-          setResponseResult(res.data);
-          setAlertInfo({
-            visible: true,
-            title: 'Information',
-            message: 'Votre profil est mis à jour avec succès !'
-          })
-          dispatch(setParticipantInfos(res.data));
-          setSaveLoading(false);
+        setResponseResult(res.data);
+        setAlertInfo({
+          visible: true,
+          title: 'Information',
+          message: 'Votre profil est mis à jour avec succès !'
         })
+        dispatch(setParticipantInfos(res.data));
+        setSaveLoading(false);
+      })
       .catch((error) => {
         setResponseError(error);
         setSaveLoading(false);
       })
-   };
+  };
 
   const handleHead = ({ tintColor }) => <Text style={{ color: tintColor }}>H1</Text>
+
+  useEffect(() => {
+    setFonction(infos?.fonction);
+  }, [infos?.fonction])
 
   return (
     <>
       <MainHeader
-       withTitle={true}
-       title="Modifier mon profil" 
-       noBackAction={true}
-      /> 
+        withTitle={true}
+        title="Modifier mon profil"
+        noBackAction={true}
+      />
       <ScrollView style={{ backgroundColor: '#fff' }}>
         <View style={{ paddingHorizontal: 20, backgroundColor: '#fff' }}>
           <BackNavigation
@@ -140,10 +147,10 @@ const EditProfile = () => {
                     color="#000"
                     name="camera-outline"
                     onPress={async () => {
-                      // const result = await launchImageLibrary();
-                      // if (!result.didCancel) {
-                      //   setImage(result.assets[0]);
-                      // }
+                      const result = await launchImageLibrary();
+                      if (!result.didCancel) {
+                        setImage(result.assets[0]);
+                      }
                     }}
                     type="ionicon"
                   />
@@ -157,32 +164,59 @@ const EditProfile = () => {
             style={{
               height: '100%',
             }}>
+              <View style={{ margin: 20, gap: 10, marginTop: -5 }}>
+              <Text style={styles.text}>Fonction</Text>
+              <TextInput
+                placeholder="Renseigner la fonction"
+                value={fonction}
+                style={{
+                  borderWidth: 1,
+                  paddingHorizontal: 10,
+                  paddingVertical: 14,
+                  color: 'grey',
+                  borderColor: 'grey',
+                  fontFamily: 'Poppins-Regular',
+                  borderRadius: 8,
+                }}
+                placeholderTextColor={COLORS.GRAY}
+                onChangeText={value => setFonction(value)}
+              />
+            </View>
             <View style={{ margin: 20, gap: 10 }}>
               <Text style={styles.text}>Présentation</Text>
               <SafeAreaView>
-                {/* <RichToolbar
+                <RichToolbar
                   editor={richText}
                   actions={[actions.setBold, actions.setItalic, actions.setUnderline, actions.insertLink, actions.insertOrderedList,
-                    actions.insertBulletsList
+                  actions.insertBulletsList
                   ]}
                   iconMap={{ [actions.heading1]: handleHead }}
-                  
-                /> */}
-                 <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={{ flex: 1 }}>
-                    {/* <RichEditor
-                      ref={richText}
-                      initialContentHTML={presentation}
-                      onChange={(text) => {
-                        setPresentation(text);
-                      }}
-                      style={{                        
-                        borderWidth: 1,
-                        borderColor: COLORS.DARKGRAY,
-                        minHeight: 40,
-                      }}
-                    /> */}
-                  </KeyboardAvoidingView>
+                />
+                <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={{ flex: 1 }}>
+                  <RichEditor
+                    ref={richText}
+                    initialContentHTML={presentation}
+                    onChange={(text) => {
+                      setPresentation(text);
+                    }}
+                    style={{
+                      borderWidth: 1,
+                      borderColor: COLORS.DARKGRAY,
+                      minHeight: 40,
+                    }}
+                  />
+                </KeyboardAvoidingView>
               </SafeAreaView>
+            </View>
+            <View style={{
+              marginTop: -20,
+            }}>
+              <SelectPickerInput 
+                defaultInterests={infos?.centreinterets || []}
+                setInterest={(interests) => {
+                setCentreInterests(interests);
+              }} />
+
             </View>
             <View style={styles.container}></View>
 
@@ -193,31 +227,37 @@ const EditProfile = () => {
                 value={twitterUrl}
                 style={{
                   borderWidth: 1,
-                  paddingLeft: 20,
+                  paddingHorizontal: 10,
+                  paddingVertical: 14,
                   color: 'grey',
-                  borderColor: 'grey', fontFamily: 'Poppins-Regular',
+                  borderColor: 'grey',
+                  fontFamily: 'Poppins-Regular',
+                  borderRadius: 8,
                 }}
                 placeholderTextColor={COLORS.GRAY}
                 onChangeText={value => setTwitterUrl(value)}
               />
             </View>
-
             <View style={{ margin: 20, gap: 10, marginTop: -5 }}>
               <Text style={styles.text}>Linkedin</Text>
               <TextInput
-                placeholder="Saisir le lien linkedIn"              
+                placeholder="Saisir le lien linkedIn"
                 value={linkedinUrl}
                 style={{
                   borderWidth: 1,
-                  paddingLeft: 20,
+                  paddingHorizontal: 10,
+                  paddingVertical: 14,
                   color: 'grey',
-                  borderColor: 'grey', 
+                  borderColor: 'grey',
                   fontFamily: 'Poppins-Regular',
+                  borderRadius: 8,
                 }}
                 placeholderTextColor={COLORS.GRAY}
                 onChangeText={value => setLinkedinUrl(value)}
               />
             </View>
+
+            
 
             <View style={{ marginHorizontal: 30, marginTop: -20 }}>
               {updateError && (
@@ -270,7 +310,7 @@ const EditProfile = () => {
         title={alertInfo.title}
         confirmMessage={alertInfo.message}
         closeAlert={() => {
-          setAlertInfo((prevState) => ({...prevState, visible: false}));
+          setAlertInfo((prevState) => ({ ...prevState, visible: false }));
         }}
       />
     </>

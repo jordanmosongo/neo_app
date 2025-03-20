@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Text, View, TextInput, Alert, Platform } from 'react-native';
 import { styles } from './ModalStyles';
 import Modal from 'react-native-modal';
-import { Icon } from '@rneui/themed';
+import { Icon, Avatar } from '@rneui/themed';
 import { ScrollView } from 'react-native-gesture-handler';
 import { ContactCard } from '../../cards/contact/ContactCard';
 import { ChatScreen } from '../../../screens/message/chat/ChatScreen';
@@ -73,8 +73,8 @@ export const MessageModal = (props) => {
               alignItems: 'center',
             }}>
               <Icon
-                name="md-close-outline"
-                type="ionicon"
+               name="close"
+               type="font-awesome"
                 size={30}
                 color={COLORS.MAIN_BLUE}
                 onPress={() => {
@@ -122,8 +122,8 @@ export const MessageModal = (props) => {
                 <View style={{...styles.selectedContactContainer}}>
                   <Text style={styles.selectedContactText}>{selectedContact.firstname} {selectedContact.name}</Text>
                   <Icon
-                    name="md-close-outline"
-                    type="ionicon"
+                    name="close"
+                    type="font-awesome"
                     size={26}
                     color="#fff"
                     style={{ marginLeft: 10 }}
