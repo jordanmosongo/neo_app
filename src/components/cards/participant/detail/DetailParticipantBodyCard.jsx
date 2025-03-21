@@ -34,20 +34,22 @@ export const DetailParticipantBodyCard = (props) => {
         <Text
           numberOfLines={3}
           style={{
-            fontSize: TEXT_SIZES.CONTACT_CARD_FIRST_TITLE,
+            fontSize: 18,
             color: COLORS.MAIN_BLUE,
             fontFamily: FONTS.POPPINS_BOLD,
             maxWidth: 250,
+            marginBottom: 4,
           }}>
           {`${capitalizeStrOnFirstLetter(participantDetail?.user?.prenom)} ${capitalizeStrOnFirstLetter(participantDetail?.user?.nom)}`}
         </Text>
         <Text
           numberOfLines={3}
           style={{
-            fontSize: TEXT_SIZES.CONTACT_CARD_DESCRIPTION,
+            fontSize: 16,
             color: COLORS.MAIN_BLUE,
             fontFamily: FONTS.POPPINS_REGULAR,
             maxWidth: 180,
+            fontWeight: "600"
           }}>
           {participantDetail?.fonction}
         </Text>

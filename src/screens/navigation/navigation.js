@@ -154,7 +154,7 @@ const Navigation = ({navigation}) => {
         }}
       />
       <Tab.Screen
-        name="Mon comptes"
+        name="Mon compte"
         component={Settings}
         options={{
           headerShown: false,

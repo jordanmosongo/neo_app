@@ -40,7 +40,6 @@ export const ItemsParticipants = (props) => {
       setIsVisible(false);
       props.refresh();
     } catch (error) {
-      console.log('error on send demand', error);
       setLoading(false);
     }
   };
@@ -114,10 +113,12 @@ export const ItemsParticipants = (props) => {
                 <Text
                   numberOfLines={1}
                   style={{
-                    color: '#281D67',
-                    fontSize: 13,
+                    color: COLORS.MAIN_BLUE,
+                    fontSize: 16,
                     fontFamily: 'Poppins-Bold',
-                    maxWidth: 200,
+                    maxWidth: 250,
+                    fontWeight: "bold",
+                    marginBottom: 3,
                   }}>
                   {capitalizeStrOnFirstLetter(participant.prenom)} {capitalizeStrOnFirstLetter(participant.nom)}
                 </Text>
@@ -127,10 +128,11 @@ export const ItemsParticipants = (props) => {
                   numberOfLines={2}
                   style={{
                     fontFamily: 'Poppins-Regular',
-                    color: '#281D67',
+                    color: COLORS.MAIN_BLUE,
                     textAlign: 'left',
                     maxWidth: 200,
-                    fontSize: 12
+                    fontSize: 14,
+                    fontWeight: "600"
                   }}>
                   {capitalizeStrOnFirstLetter(participant.fonction)}
                 </Text>
@@ -143,9 +145,10 @@ export const ItemsParticipants = (props) => {
                     fontFamily: FONTS.POPPINS_REGULAR,
                     color: COLORS.MAIN_BLUE,
                     maxWidth: 200,
-                    fontSize: 12
+                    fontSize: 13,
+                    fontWeight: "500"
                   }}>
-                  {capitalizeStrOnFirstLetter(participant.organisation.nom)}
+                  {participant.organisation.nom}
                 </Text>
               )}
               {participant.from_structure && (

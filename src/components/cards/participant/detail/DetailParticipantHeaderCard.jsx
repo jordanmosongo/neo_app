@@ -33,14 +33,6 @@ export const DetailParticipantHeaderCard = (props) => {
           source={{
             uri: `${Helpers.getPhotoUrl(participantDetail?.photo)}`,
           }}
-          /* title={
-            participantDetail?.user?.nom[0] +
-            participantDetail?.user?.prenom[0]
-          }
-          titleStyle={{ 
-            color: COLORS.MAIN_BLUE, 
-            fontFamily: FONTS.POPPINS_BOLD,
-          }} */
           >
           {(props.routeData && props.routeData.profile) && <View
             style={{
